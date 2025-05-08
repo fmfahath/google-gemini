@@ -43,6 +43,7 @@
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 15px;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 .main .card {
@@ -78,7 +79,7 @@
     bottom: 0;
     width: 100%;
     max-width: 900px;
-    padding: 0px 20px;
+    padding: 20px 20px;
     margin: auto;
 }
 
@@ -103,7 +104,7 @@
     border: none;
     outline: none;
     padding: 8px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .search-box div {
@@ -173,5 +174,63 @@
 
     100% {
         background-position: 800px 0px;
+    }
+}
+
+@media(max-width:600px) {
+    .main .nav img {
+        width: 35px;
+    }
+
+    .main .greet {
+        font-size: 30px;
+    }
+
+    .main .cards {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        /* padding: 20px; */
+    }
+
+    .main .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        text-align: center;
+        height: 150px;
+        padding: 10px;
+    }
+
+    .main .card img {
+        position: relative;
+        bottom: 0px;
+        right: 0px;
+    }
+
+    .search-box input {
+        flex: none;
+        width: 150px;
+    }
+
+    .main-bottom img {
+        width: 18px;
+    }
+
+    .search-box {
+        padding: 5px 10px;
+    }
+
+    .search-box div {
+        gap: 8px;
+    }
+
+    .result {
+        margin-bottom: 50px;
+    }
+
+    .result img {
+        width: 25px;
     }
 }
