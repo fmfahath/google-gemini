@@ -20,6 +20,15 @@ const ContextProvider = (props) => {
         }, 15 * index)
     }
 
+    //new chat button function
+    const newChat = () => {
+        setLoading(false)
+        setShowResult(false)
+        setInput("")
+    }
+
+
+    //API main function
     const onSent = async (prompt) => {
         setResultData("")
         setLoading(true)
@@ -71,7 +80,8 @@ const ContextProvider = (props) => {
         showResult, setShowResult,
         loading, setLoading,
         resultData, setResultData,
-        onSent
+        onSent,
+        newChat
     }
 
     return (
