@@ -17,20 +17,29 @@ const ContextProvider = (props) => {
     const delayPara = (index, nextWord) => {
         setTimeout(() => {
             setResultData(prev => prev + nextWord)
-        }, 75 * index)
+        }, 15 * index)
     }
 
     const onSent = async (prompt) => {
         setResultData("")
         setLoading(true)
         setShowResult(true)
-        setRecentPrompt(input)
-        setPrevPrompt(prev => [...prev, input])
-        const response = await main(input)
+
+        //check the input whether is from search box or recent prompt
+        let response;
+        if (prompt !== undefined) {
+            response = await main(prompt)
+            setRecentPrompt(prompt)
+        }
+        else {
+            setPrevPrompt(prev => [...prev, input])
+            response = await main(input)
+            setRecentPrompt(input)
+        }
 
         //adding bold text to the response for **
         let responseArray = response.split("**")
-        let newResponse;
+        let newResponse = "";
         for (let i = 0; i < responseArray.length; i++) {
             if (i === 0 || i % 2 !== 1) {
                 newResponse += responseArray[i]
