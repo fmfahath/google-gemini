@@ -19,7 +19,23 @@ const ContextProvider = (props) => {
         setShowResult(true)
         setRecentPrompt(input)
         const response = await main(input)
-        setResultData(response)
+
+        //adding bold text to the response for **
+        let responseArray = response.split("**")
+        let newResponse;
+        for (let i = 0; i < responseArray.length; i++) {
+            if (i === 0 || i % 2 !== 1) {
+                newResponse += responseArray[i]
+            }
+            else {
+                newResponse += `<b>${responseArray[i]}</b>`
+            }
+        }
+
+        //add new line for *
+        let newResponse2 = newResponse.split("*").join("<br/></br>")
+
+        setResultData(newResponse2)
         setLoading(false)
         setInput("")
     }
