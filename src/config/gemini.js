@@ -10,6 +10,7 @@ async function main(prompt) {
         contents: prompt,
     });
     console.log(response.text);
+    return response.text;
 }
 
 export default main;
