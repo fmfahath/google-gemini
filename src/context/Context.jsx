@@ -13,6 +13,13 @@ const ContextProvider = (props) => {
     const [loading, setLoading] = useState(false)
     const [resultData, setResultData] = useState("")
 
+    //delay pragraph text effect
+    const delayPara = (index, nextWord) => {
+        setTimeout(() => {
+            setResultData(prev => prev + nextWord)
+        }, 75 * index)
+    }
+
     const onSent = async (prompt) => {
         setResultData("")
         setLoading(true)
@@ -35,7 +42,13 @@ const ContextProvider = (props) => {
         //add new line for *
         let newResponse2 = newResponse.split("*").join("<br/></br>")
 
-        setResultData(newResponse2)
+        //delay pragraph text effect
+        let newResponseArray = newResponse2.split(" ")
+        for (let i = 0; i < newResponseArray.length; i++) {
+            const nextWord = newResponseArray[i]
+            delayPara(i, nextWord + " ")
+        }
+
         setLoading(false)
         setInput("")
     }
